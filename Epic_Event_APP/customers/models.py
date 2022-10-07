@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 
 from users.models import User
@@ -13,4 +14,4 @@ class Customer(models.Model):
     company_name = models.CharField(max_length=250, blank=False)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-    sales_contact_id = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
+    sales_contact_id = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
