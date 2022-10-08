@@ -6,3 +6,4 @@ class StaffRole(Enum):
     SALER = 'Saler'
     GESTION = 'Gestion'
     SUPPORT = 'Support'
+    ADMIN = 'Admin'

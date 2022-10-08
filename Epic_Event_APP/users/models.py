@@ -23,10 +23,13 @@ class User(AbstractUser):
 
     def save(self, *args, **kwargs):
         """add the user to a specific group according to their role"""
-        if self.role == 'GESTION':
-            self.groups.add(gestion_group)
-        elif self.role == 'SUPPORT':
-            self.groups.add(support_group)
-        elif self.role == 'SALER':
-            self.groups.add(saler_group)
-        super(User, self).save(*args, **kwargs)
+        if not self.id:
+            super(User, self).save(*args, **kwargs)
+        else:
+            if self.role == 'GESTION':
+                self.groups.add(gestion_group)
+            elif self.role == 'SUPPORT':
+                self.groups.add(support_group)
+            elif self.role == 'SALER':
+                self.groups.add(saler_group)
+            super(User, self).save(*args, **kwargs)
