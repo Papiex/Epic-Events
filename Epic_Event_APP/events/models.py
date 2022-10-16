@@ -10,7 +10,7 @@ class Event(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     support_contact_id = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
-    event_statut_id = models.BooleanField(default=False, blank=False)
+    event_statut = models.BooleanField(default=False, blank=False)
     attendees = models.IntegerField(blank=False)
     event_date = models.DateTimeField(blank=False)
     notes = models.TextField(max_length=250)
