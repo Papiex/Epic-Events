@@ -12,6 +12,7 @@ class ContractAdmin(admin.ModelAdmin):
         'status',
         'amount',
         'payment_due',
+        'id',
     )
 
 
