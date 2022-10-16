@@ -9,11 +9,12 @@ class EventAdmin(admin.ModelAdmin):
         'date_created',
         'date_updated',
         'support_contact_id',
-        'event_statut_id',
+        'event_statut',
         'attendees',
         'event_date',
         'notes',
         'contract_id',
+        'id'
         )
 
 
