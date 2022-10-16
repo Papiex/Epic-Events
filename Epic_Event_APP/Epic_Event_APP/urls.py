@@ -4,14 +4,17 @@ from django.urls import path, include
 from rest_framework_simplejwt.views import (TokenObtainPairView,
                                             TokenRefreshView)
 from rest_framework.routers import DefaultRouter
-from rest_framework_nested import routers
 
 from customers.views import CustomerViewSet
+from events.views import EventViewSet
+from contracts.views import ContractViewSet
 
 
 router = DefaultRouter()
 
 router.register(r'customers', CustomerViewSet, basename='customers')
+router.register(r'events', EventViewSet, basename='events')
+router.register(r'contracts', ContractViewSet, basename='contracts')
 
 
 urlpatterns = [
