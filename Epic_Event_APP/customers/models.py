@@ -2,7 +2,7 @@ from email.policy import default
 from django.db import models
 
 from users.models import User
-
+from customers.enums import CustomerType
 
 class Customer(models.Model):
     """Define client model"""
@@ -15,3 +15,11 @@ class Customer(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     sales_contact_id = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    customer_type = models.CharField(
+        max_length=16,
+        choices=[(customer_type.name, customer_type.value) for customer_type in CustomerType],
+        default='POTENTIAL'
+    )
+
+    def __str__(self) -> str:
+        return str(self.first_name) + " " + str(self.id)
