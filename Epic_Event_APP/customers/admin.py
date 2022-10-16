@@ -15,6 +15,8 @@ class CustomerAdmin(admin.ModelAdmin):
         'date_created',
         'date_updated',
         'sales_contact_id',
+        'customer_type',
+        'id',
     )
 
 
