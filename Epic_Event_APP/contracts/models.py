@@ -13,3 +13,6 @@ class Contract(models.Model):
     status = models.BooleanField(default=False)
     amount = models.FloatField(blank=False)
     payment_due = models.DateTimeField(blank=False)
+
+    def __str__(self) -> str:
+        return "Contract " + str(self.id)
