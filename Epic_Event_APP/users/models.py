@@ -33,3 +33,6 @@ class User(AbstractUser):
             elif self.role == 'SALER':
                 self.groups.add(saler_group)
             super(User, self).save(*args, **kwargs)
+
+    def __str__(self) -> str:
+        return str(self.username) + " " + str(self.id)
