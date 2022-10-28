@@ -68,6 +68,6 @@ class Command(BaseCommand):
             and User.objects.filter(first_name='support_user') \
             and User.objects.filter(first_name='saler_user') \
             and User.objects.filter(first_name='admin_user'):
-                self.stdout.write(self.style.SUCCESS(f'Successfully created Gestion, Saler and Support User, check the README for the users identifers'))
+                self.stdout.write(self.style.SUCCESS(f'Successfully created Gestion, Saler, Support and Admin User, check the README for the users identifers'))
             else:
                 self.stdout.write(self.style.ERROR(f'Somenthing went wrong with the command, please try again'))
