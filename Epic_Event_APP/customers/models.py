@@ -20,6 +20,3 @@ class Customer(models.Model):
         choices=[(customer_type.name, customer_type.value) for customer_type in CustomerType],
         default='POTENTIAL'
     )
-
-    def __str__(self) -> str:
-        return str(self.first_name) + " " + str(self.id)
