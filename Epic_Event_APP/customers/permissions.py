@@ -12,7 +12,7 @@ class CustomerPermission(BasePermission):
     def has_permission(self, request, view) -> bool:
 
         if request.method == 'GET':
-            return request.user.role == 'SUPPORT' or request.user.role == 'SALER'
+            return request.user.role == 'SUPPORT' or request.user.role == 'SALER' or request.user.role == 'GESTION'
         if request.method == 'DELETE':
             return request.user.role == 'GESTION'
         return request.user.role == 'SALER' or request.user.role == 'GESTION'
