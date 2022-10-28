@@ -5,7 +5,6 @@ from customers.models import Customer
 
 
 class Contract(models.Model):
-    """"""
     sales_contact_id = models.ForeignKey(User, on_delete=models.CASCADE, blank=False)
     customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE, blank=False)
     date_created = models.DateTimeField(auto_now_add=True)
@@ -13,6 +12,3 @@ class Contract(models.Model):
     status = models.BooleanField(default=False)
     amount = models.FloatField(blank=False)
     payment_due = models.DateTimeField(blank=False)
-
-    def __str__(self) -> str:
-        return "Contract " + str(self.id)
