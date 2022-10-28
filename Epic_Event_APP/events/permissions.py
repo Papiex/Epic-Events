@@ -30,6 +30,8 @@ class EventPermission(BasePermission):
 
         if request.method in permissions.SAFE_METHODS:
             return True
+        if request.method == 'DELETE':
+            return request.user.role == 'GESTION'
         if request.method == 'PUT' or request.method == 'PATCH':
             if request.user.role == 'GESTION':
                 return True
