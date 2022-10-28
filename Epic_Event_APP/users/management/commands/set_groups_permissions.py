@@ -10,9 +10,9 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        salers_group = Group.objects.get(name='Saler Team')
-        supports_group = Group.objects.get(name='Support Team')
-        gestions_group = Group.objects.get(name='Gestion Team')
+        salers_group = Group.objects.create(name='Saler Team')
+        supports_group = Group.objects.create(name='Support Team')
+        gestions_group = Group.objects.create(name='Gestion Team')
         saler_permissions = self.get_saler_permissions()
         support_permissions = self.get_support_permissions()
         gestion_permissions = self.get_gestion_permissions()
