@@ -3,6 +3,9 @@ from django.contrib.auth.models import AbstractUser, Group
 
 from .enums import StaffRole
 
+gestion_group = Group.objects.get(name='Gestion Team')
+support_group = Group.objects.get(name='Support Team')
+saler_group = Group.objects.get(name='Saler Team')
 
 class User(AbstractUser):
     """Custom User Model"""
@@ -18,9 +21,6 @@ class User(AbstractUser):
 
     def save(self, *args, **kwargs):
         """add the user to a specific group according to their role"""
-        gestion_group = Group.objects.get(name='Gestion Team')
-        support_group = Group.objects.get(name='Support Team')
-        saler_group = Group.objects.get(name='Saler Team')
         if not self.id:
             super(User, self).save(*args, **kwargs)
         else:
