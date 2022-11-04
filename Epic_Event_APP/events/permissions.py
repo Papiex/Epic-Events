@@ -2,6 +2,9 @@ from rest_framework.permissions import BasePermission
 from rest_framework import permissions
 from rest_framework.generics import get_object_or_404
 
+from datetime import datetime
+import pytz
+
 from customers.models import Customer
 from contracts.models import Contract
 
@@ -27,7 +30,7 @@ class EventPermission(BasePermission):
             return True
 
     def has_object_permission(self, request, view, obj):
-
+        utc = pytz.UTC
         if request.method in permissions.SAFE_METHODS:
             return True
         if request.method == 'DELETE':
@@ -35,5 +38,7 @@ class EventPermission(BasePermission):
         if request.method == 'PUT' or request.method == 'PATCH':
             if request.user.role == 'GESTION':
                 return True
+            elif obj.event_date.replace(tzinfo=utc) < datetime.now().replace(tzinfo=utc):
+                return False
             else:
                 return request.user == obj.support_contact_id and request.user.role == 'SUPPORT' or request.user.role == 'GESTION'
