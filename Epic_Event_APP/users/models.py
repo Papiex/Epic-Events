@@ -3,9 +3,6 @@ from django.contrib.auth.models import AbstractUser, Group
 
 from .enums import StaffRole
 
-gestion_group = Group.objects.get(name='Gestion Team')
-support_group = Group.objects.get(name='Support Team')
-saler_group = Group.objects.get(name='Saler Team')
 
 class User(AbstractUser):
     """Custom User Model"""
@@ -25,11 +22,12 @@ class User(AbstractUser):
             super(User, self).save(*args, **kwargs)
         else:
             if self.role == 'GESTION':
-                self.groups.add(gestion_group)
+                self.groups.add(Group.objects.get(name='Gestion Team'))
             elif self.role == 'SUPPORT':
-                self.groups.add(support_group)
+                self.groups.add(Group.objects.get(name='Support Team'))
             elif self.role == 'SALER':
-                self.groups.add(saler_group)
+                self.groups.add(Group.objects.get(name='Saler Team'))
+                print(self.groups)
             super(User, self).save(*args, **kwargs)
 
     def __str__(self) -> str:
