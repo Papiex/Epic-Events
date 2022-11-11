@@ -18,27 +18,42 @@ class EventPermission(BasePermission):
 
     def has_permission(self, request, view) -> bool:
 
-        if request.method == 'GET':
-            return request.user.role == 'SUPPORT' or request.user.role == 'SALER' or request.user.role == 'GESTION'
-        if request.method == 'DELETE':
-            return request.user.role == 'GESTION'
-        if request.method == 'POST':
-            contract = get_object_or_404(Contract, id=request.data.get('contract_id'))
+        if request.method == "GET":
+            return (
+                request.user.role == "SUPPORT"
+                or request.user.role == "SALER"
+                or request.user.role == "GESTION"
+            )
+        if request.method == "DELETE":
+            return request.user.role == "GESTION"
+        if request.method == "POST":
+            contract = get_object_or_404(Contract, id=request.data.get("contract_id"))
             customer = get_object_or_404(Customer, id=contract.customer_id.id)
-            return customer.sales_contact_id == request.user and contract.sales_contact_id == request.user and request.user.role == 'SALER' or request.user.role == 'GESTION'
-        if request.method == 'PUT' or request.method == 'PATCH':
+            return (
+                customer.sales_contact_id == request.user
+                and contract.sales_contact_id == request.user
+                and request.user.role == "SALER"
+                or request.user.role == "GESTION"
+            )
+        if request.method == "PUT" or request.method == "PATCH":
             return True
 
-    def has_object_permission(self, request, view, obj):
+    def has_object_permission(self, request, view, obj) -> bool:
         utc = pytz.UTC
         if request.method in permissions.SAFE_METHODS:
             return True
-        if request.method == 'DELETE':
-            return request.user.role == 'GESTION'
-        if request.method == 'PUT' or request.method == 'PATCH':
-            if request.user.role == 'GESTION':
+        if request.method == "DELETE":
+            return request.user.role == "GESTION"
+        if request.method == "PUT" or request.method == "PATCH":
+            if request.user.role == "GESTION":
                 return True
-            elif obj.event_date.replace(tzinfo=utc) < datetime.now().replace(tzinfo=utc):
+            elif obj.event_date.replace(tzinfo=utc) < datetime.now().replace(
+                tzinfo=utc
+            ):
                 return False
             else:
-                return request.user == obj.support_contact_id and request.user.role == 'SUPPORT' or request.user.role == 'GESTION'
+                return (
+                    request.user == obj.support_contact_id
+                    and request.user.role == "SUPPORT"
+                    or request.user.role == "GESTION"
+                )

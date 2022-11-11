@@ -12,7 +12,7 @@ class EventViewSet(viewsets.ModelViewSet):
     serializer_class = EventSerializer
     permission_classes = [EventPermission, IsAuthenticated]
     filterset_fields = [
-        'customer_id__last_name',
-        'customer_id__email',
-        'event_date',
-        ]
+        "customer_id__last_name",
+        "customer_id__email",
+        "event_date",
+    ]

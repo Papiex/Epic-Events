@@ -7,9 +7,8 @@ from .serializers import CustomerSerializer
 from .permissions import CustomerPermission
 
 
-
 class CustomerViewSet(viewsets.ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
     permission_classes = [CustomerPermission, IsAuthenticated]
-    filterset_fields = ['email', 'last_name']
+    filterset_fields = ["email", "last_name"]

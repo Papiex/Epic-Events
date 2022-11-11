@@ -6,9 +6,9 @@ from .enums import StaffRole
 
 class User(AbstractUser):
     """Custom User Model"""
+
     role = models.CharField(
-        max_length=16,
-        choices=[(role.name, role.value) for role in StaffRole]
+        max_length=16, choices=[(role.name, role.value) for role in StaffRole]
     )
     first_name = models.CharField(max_length=25, blank=False)
     last_name = models.CharField(max_length=25, blank=False)
@@ -21,12 +21,12 @@ class User(AbstractUser):
         if not self.id:
             super(User, self).save(*args, **kwargs)
         else:
-            if self.role == 'GESTION':
-                self.groups.add(Group.objects.get(name='Gestion Team'))
-            elif self.role == 'SUPPORT':
-                self.groups.add(Group.objects.get(name='Support Team'))
-            elif self.role == 'SALER':
-                self.groups.add(Group.objects.get(name='Saler Team'))
+            if self.role == "GESTION":
+                self.groups.add(Group.objects.get(name="Gestion Team"))
+            elif self.role == "SUPPORT":
+                self.groups.add(Group.objects.get(name="Support Team"))
+            elif self.role == "SALER":
+                self.groups.add(Group.objects.get(name="Saler Team"))
                 print(self.groups)
             super(User, self).save(*args, **kwargs)
 

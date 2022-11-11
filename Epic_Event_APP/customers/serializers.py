@@ -7,17 +7,17 @@ class CustomerSerializer(ModelSerializer):
     class Meta:
         model = Customer
         fields = (
-            'first_name',
-            'last_name',
-            'email',
-            'phone',
-            'mobile',
-            'company_name',
-            'sales_contact_id',
-            'customer_type',
+            "first_name",
+            "last_name",
+            "email",
+            "phone",
+            "mobile",
+            "company_name",
+            "sales_contact_id",
+            "customer_type",
         )
-        read_only_fields = ['sales_contact_id']
-    
+        read_only_fields = ["sales_contact_id"]
+
     def create(self, validated_data) -> Customer:
         """assign the user request in the field sales_contact_id"""
 
@@ -26,4 +26,3 @@ class CustomerSerializer(ModelSerializer):
         customer.save()
 
         return customer
-
