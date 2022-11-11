@@ -11,6 +11,7 @@ Epic Events customer relationship management software is a secure application th
 <li><a href="#installation-on-linux">Installation on Linux</a></li>
 <li><a href="#installation-on-mac">Installation on Mac</a></li>
 <li><a href="#setup-the-application">Setup The Application</a></li>
+<li><a href="#tests-coverage">Tests Coverage</a></li>
 <li><a href="#postman-documentation">POSTMAN Documentation</a></li>
 
 
@@ -113,6 +114,12 @@ SUPPORT USER :
 Username ```support_user```
 
 Password ```motdepasse78```
+
+## Tests Coverage
+
+You can check the tests coverage by acccessing index.html in the html coverage directory
+
+```Epic_Event_APP/html tests coverage/index.html```
 
 ## POSTMAN Documentation
 
