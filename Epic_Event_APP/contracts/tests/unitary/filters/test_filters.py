@@ -58,7 +58,7 @@ class TestFilters:
             Contract.objects.create(**payload_02)
         refresh = RefreshToken.for_user(saler_user)
         api_client.credentials(HTTP_AUTHORIZATION=f"Bearer {refresh.access_token}")
-        response = api_client.get("/contracts/?customer_id__email=test@mail.fr")
+        response = api_client.get("/contracts/?email=test@mail.fr")
 
         assert response.status_code == 200
         assert len(response.data) == 5
@@ -72,7 +72,7 @@ class TestFilters:
             Contract.objects.create(**payload_02)
         refresh = RefreshToken.for_user(saler_user)
         api_client.credentials(HTTP_AUTHORIZATION=f"Bearer {refresh.access_token}")
-        response = api_client.get("/contracts/?customer_id__last_name=test")
+        response = api_client.get("/contracts/?last_name=test")
 
         assert response.status_code == 200
         assert len(response.data) == 5
