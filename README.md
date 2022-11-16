@@ -123,6 +123,7 @@ You can check the tests coverage by acccessing index.html in the html coverage d
 
 ## POSTMAN Documentation
 
-Except the admin user (only for admin panel), all request on endpoints need to be executed with POSTMAN
+Except the admin user and gestion user (only for admin panel, http://127.0.0.1:8000/admin/ ), all request on endpoints need to be executed with POSTMAN
 
-The documentation and all endpoints can be found here :
+The documentation of all endpoints can be found here :
+https://documenter.getpostman.com/view/20535927/2s8YmKSjRK
